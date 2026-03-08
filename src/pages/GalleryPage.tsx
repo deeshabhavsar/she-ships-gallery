@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { supabase, type Project } from "@/lib/supabase";
 import ProjectCard from "@/components/ProjectCard";
+import ProjectDetailDialog from "@/components/ProjectDetailDialog";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SparkleBackground from "@/components/SparkleBackground";
@@ -14,6 +15,7 @@ const GalleryPage = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -134,11 +136,17 @@ const GalleryPage = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} />
+              <ProjectCard key={project.id} project={project} index={i} onClick={() => setSelectedProject(project)} />
             ))}
           </div>
         )}
       </section>
+
+      <ProjectDetailDialog
+        project={selectedProject}
+        open={!!selectedProject}
+        onOpenChange={(open) => !open && setSelectedProject(null)}
+      />
 
       <Footer />
     </div>

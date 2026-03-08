@@ -11,13 +11,14 @@ const tagStyles: Record<string, string> = {
   Other: "bg-muted text-muted-foreground",
 };
 
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+const ProjectCard = ({ project, index, onClick }: { project: Project; index: number; onClick?: () => void }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="bg-card rounded-2xl border border-border overflow-hidden shadow-soft hover:shadow-hover hover:-translate-y-1 transition-all duration-300 group"
+      onClick={onClick}
+      className="bg-card rounded-2xl border border-border overflow-hidden shadow-soft hover:shadow-hover hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
     >
       {project.screenshot_url ? (
         <div className="h-44 overflow-hidden">
