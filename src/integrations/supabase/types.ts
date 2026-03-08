@@ -14,6 +14,35 @@ export type Database = {
   }
   public: {
     Tables: {
+      feedback: {
+        Row: {
+          created_at: string
+          id: string
+          message: string
+          project_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message: string
+          project_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string
+          project_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "feedback_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projects: {
         Row: {
           avatar_url: string | null
