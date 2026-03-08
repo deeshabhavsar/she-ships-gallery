@@ -108,9 +108,6 @@ const ProjectDetailDialog = ({ project, open, onOpenChange }: Props) => {
                 <Linkedin className="w-4 h-4" /> LinkedIn
               </a>
             )}
-            <span className="inline-flex items-center gap-1 text-xs text-muted-foreground mt-1">
-              <Sparkles className="w-3 h-3" /> Built with Lovable
-            </span>
           </div>
         </div>
 
@@ -130,14 +127,19 @@ const ProjectDetailDialog = ({ project, open, onOpenChange }: Props) => {
         </div>
 
         {/* Project link */}
-        <a
-          href={project.project_link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 gradient-primary text-primary-foreground font-semibold px-5 py-2.5 rounded-full w-fit text-sm"
-        >
-          Try It Out <ArrowRight className="w-4 h-4" />
-        </a>
+        <div className="flex flex-col items-start gap-1">
+          <a
+            href={project.project_link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 gradient-primary text-primary-foreground font-semibold px-5 py-2.5 rounded-full w-fit text-sm"
+          >
+            Try It Out <ArrowRight className="w-4 h-4" />
+          </a>
+          <span className="inline-flex items-center gap-1 text-xs text-muted-foreground ml-1">
+            <Sparkles className="w-3 h-3" /> Built with Lovable
+          </span>
+        </div>
 
         {/* Feedback section */}
         <div className="border-t border-border pt-4 mt-2">
