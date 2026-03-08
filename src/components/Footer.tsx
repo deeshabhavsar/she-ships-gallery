@@ -35,7 +35,7 @@ const Footer = () => {
           </a>
         </div>
         <p className="text-sm text-background/40">
-          SheBuilds 2025 · Celebrating Women Who Create
+          SheBuilds 2026 · Celebrating Women Who Create
         </p>
       </div>
     </footer>
