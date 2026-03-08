@@ -68,12 +68,6 @@ const SplashPage = () => {
           >
             Explore Projects
           </button>
-          <button
-            onClick={() => navigate("/submit")}
-            className="bg-white/20 backdrop-blur-sm text-white font-semibold text-base px-8 py-3 rounded-full border border-white/30 hover:bg-white/30 transition-all"
-          >
-            Submit Project
-          </button>
         </motion.div>
       </div>
     </div>
