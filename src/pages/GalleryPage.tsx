@@ -142,6 +142,12 @@ const GalleryPage = () => {
         )}
       </section>
 
+      <ProjectDetailDialog
+        project={selectedProject}
+        open={!!selectedProject}
+        onOpenChange={(open) => !open && setSelectedProject(null)}
+      />
+
       <Footer />
     </div>
   );
