@@ -53,9 +53,7 @@ const SplashPage = () => {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="text-lg sm:text-xl text-white/80 mb-12 max-w-xl mx-auto"
         >
-          The age of the builder is here. And it's for everyone.
-          <br />
-          Join our celebration March 8th.
+          Here's to the women who build the world they want to live in.
         </motion.p>
 
         <motion.div
@@ -69,12 +67,6 @@ const SplashPage = () => {
             className="bg-foreground text-background font-semibold text-base px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
           >
             Explore Projects
-          </button>
-          <button
-            onClick={() => navigate("/submit")}
-            className="bg-white/20 backdrop-blur-sm text-white font-semibold text-base px-8 py-3 rounded-full border border-white/30 hover:bg-white/30 transition-all"
-          >
-            Submit Project
           </button>
         </motion.div>
       </div>
