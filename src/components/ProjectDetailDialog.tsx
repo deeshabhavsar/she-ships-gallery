@@ -98,21 +98,19 @@ const ProjectDetailDialog = ({ project, open, onOpenChange }: Props) => {
           )}
           <div>
             <p className="font-semibold text-foreground">{project.builder_name}</p>
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-                <Sparkles className="w-3 h-3" /> Built with Lovable
-              </span>
-              {project.linkedin_url && (
-                <a
-                  href={project.linkedin_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
-                >
-                  <Linkedin className="w-3 h-3" /> LinkedIn
-                </a>
-              )}
-            </div>
+            {project.linkedin_url && (
+              <a
+                href={project.linkedin_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 font-semibold text-primary hover:underline"
+              >
+                <Linkedin className="w-4 h-4" /> LinkedIn
+              </a>
+            )}
+            <span className="inline-flex items-center gap-1 text-xs text-muted-foreground mt-1">
+              <Sparkles className="w-3 h-3" /> Built with Lovable
+            </span>
           </div>
         </div>
 
