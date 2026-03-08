@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Upload, Check } from "lucide-react";
 import confetti from "canvas-confetti";
 import { supabase } from "@/lib/supabase";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import SparkleBackground from "@/components/SparkleBackground";
 
 const TAG_OPTIONS = ["AI", "Productivity", "Health", "Education", "Fun", "Other"];
 
@@ -74,12 +74,11 @@ const SubmitPage = () => {
 
       if (insertError) throw insertError;
 
-      // Celebration!
       confetti({
         particleCount: 150,
         spread: 80,
         origin: { y: 0.6 },
-        colors: ["#a855f7", "#ec4899", "#f59e0b", "#ffffff"],
+        colors: ["#7C3AED", "#EC4899", "#F59E0B", "#ffffff"],
       });
 
       setTimeout(() => navigate("/gallery"), 2000);
@@ -90,62 +89,58 @@ const SubmitPage = () => {
     }
   };
 
-  return (
-    <div className="min-h-screen bg-background relative">
-      <SparkleBackground />
+  const inputClass =
+    "w-full px-4 py-3 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors";
 
-      <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 py-12">
-        <Link
-          to="/gallery"
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+
+      <div className="max-w-xl mx-auto px-4 sm:px-6 py-12">
+        <button
+          onClick={() => navigate("/gallery")}
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8 text-sm"
         >
           <ArrowLeft className="w-4 h-4" /> Back to Gallery
-        </Link>
+        </button>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl sm:text-5xl font-display font-black mb-2 text-foreground">
-            Submit Your Project <span className="text-gradient-gold">✨</span>
+          <h1 className="text-3xl sm:text-4xl font-black mb-2">
+            <span className="text-gradient">Submit Your Project</span> ✨
           </h1>
           <p className="text-muted-foreground mb-8">
             She imagined it, she built it. Now share it with the world.
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name */}
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-semibold text-foreground mb-2">
-                Your Name *
-              </label>
+              <label className="block text-sm font-semibold text-foreground mb-2">Your Name *</label>
               <input
                 type="text"
                 value={form.builder_name}
                 onChange={(e) => setForm({ ...form, builder_name: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className={inputClass}
                 placeholder="e.g. Deesha Bhavsar"
                 maxLength={100}
               />
             </div>
 
-            {/* Project Name */}
             <div>
-              <label className="block text-sm font-semibold text-foreground mb-2">
-                Project Name *
-              </label>
+              <label className="block text-sm font-semibold text-foreground mb-2">Project Name *</label>
               <input
                 type="text"
                 value={form.project_name}
                 onChange={(e) => setForm({ ...form, project_name: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className={inputClass}
                 placeholder="e.g. SheBuilds Gallery"
                 maxLength={100}
               />
             </div>
 
-            {/* Description */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
                 Short Description * <span className="text-muted-foreground font-normal">({form.description.length}/200)</span>
@@ -153,28 +148,24 @@ const SubmitPage = () => {
               <textarea
                 value={form.description}
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+                className={`${inputClass} resize-none`}
                 rows={3}
                 maxLength={200}
                 placeholder="What does your project do?"
               />
             </div>
 
-            {/* Project Link */}
             <div>
-              <label className="block text-sm font-semibold text-foreground mb-2">
-                Project Link *
-              </label>
+              <label className="block text-sm font-semibold text-foreground mb-2">Project Link *</label>
               <input
                 type="url"
                 value={form.project_link}
                 onChange={(e) => setForm({ ...form, project_link: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className={inputClass}
                 placeholder="https://your-project.lovable.app"
               />
             </div>
 
-            {/* Tags */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
                 Tags * <span className="text-muted-foreground font-normal">(select at least one)</span>
@@ -185,10 +176,10 @@ const SubmitPage = () => {
                     key={tag}
                     type="button"
                     onClick={() => toggleTag(tag)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                       form.tags.includes(tag)
-                        ? "gradient-gold text-accent-foreground border-accent"
-                        : "bg-card text-muted-foreground border-border hover:border-primary/50"
+                        ? "gradient-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     {form.tags.includes(tag) && <Check className="w-3 h-3 inline mr-1" />}
@@ -198,12 +189,11 @@ const SubmitPage = () => {
               </div>
             </div>
 
-            {/* Avatar Upload */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
                 Profile Photo <span className="text-muted-foreground font-normal">(optional)</span>
               </label>
-              <label className="flex items-center gap-3 px-4 py-3 rounded-lg bg-card border border-border cursor-pointer hover:border-primary/50 transition-colors">
+              <label className="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-dashed border-border cursor-pointer hover:border-primary/40 transition-colors">
                 <Upload className="w-4 h-4 text-muted-foreground" />
                 <span className="text-sm text-muted-foreground">
                   {avatarFile ? avatarFile.name : "Choose a photo..."}
@@ -217,12 +207,11 @@ const SubmitPage = () => {
               </label>
             </div>
 
-            {/* Screenshot Upload */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
                 Project Screenshot <span className="text-muted-foreground font-normal">(optional)</span>
               </label>
-              <label className="flex items-center gap-3 px-4 py-3 rounded-lg bg-card border border-border cursor-pointer hover:border-primary/50 transition-colors">
+              <label className="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-dashed border-border cursor-pointer hover:border-primary/40 transition-colors">
                 <Upload className="w-4 h-4 text-muted-foreground" />
                 <span className="text-sm text-muted-foreground">
                   {screenshotFile ? screenshotFile.name : "Choose a screenshot..."}
@@ -243,9 +232,9 @@ const SubmitPage = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full gradient-gold text-accent-foreground font-bold text-lg py-4 rounded-full hover:shadow-glow transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full gradient-primary text-primary-foreground font-semibold text-lg py-4 rounded-full hover:shadow-hover transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {submitting ? "Submitting..." : "Submit Your Project 🚀"}
+              {submitting ? "Submitting..." : "Submit My Project 🚀"}
             </button>
           </form>
         </motion.div>

@@ -1,47 +1,34 @@
-import { useEffect, useState } from "react";
-
-interface Sparkle {
-  id: number;
-  left: number;
-  size: number;
-  duration: number;
-  delay: number;
-  opacity: number;
-}
-
 const SparkleBackground = () => {
-  const [sparkles, setSparkles] = useState<Sparkle[]>([]);
-
-  useEffect(() => {
-    const generated: Sparkle[] = Array.from({ length: 40 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      size: Math.random() * 4 + 2,
-      duration: Math.random() * 8 + 6,
-      delay: Math.random() * 10,
-      opacity: Math.random() * 0.6 + 0.2,
-    }));
-    setSparkles(generated);
-  }, []);
-
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {sparkles.map((s) => (
-        <div
-          key={s.id}
-          className="absolute rounded-full animate-sparkle"
-          style={{
-            left: `${s.left}%`,
-            bottom: `-${s.size}px`,
-            width: `${s.size}px`,
-            height: `${s.size}px`,
-            background: `radial-gradient(circle, hsl(43 96% 70%), hsl(280 50% 70%))`,
-            animationDuration: `${s.duration}s`,
-            animationDelay: `${s.delay}s`,
-            opacity: s.opacity,
-          }}
-        />
-      ))}
+      {/* Purple orb */}
+      <div
+        className="absolute w-[400px] h-[400px] rounded-full animate-float-orb opacity-30 blur-[100px]"
+        style={{
+          background: "hsl(263 70% 60%)",
+          top: "10%",
+          left: "10%",
+        }}
+      />
+      {/* Pink orb */}
+      <div
+        className="absolute w-[350px] h-[350px] rounded-full animate-float-orb-reverse opacity-25 blur-[100px]"
+        style={{
+          background: "hsl(330 65% 60%)",
+          top: "30%",
+          right: "10%",
+        }}
+      />
+      {/* Small purple orb */}
+      <div
+        className="absolute w-[200px] h-[200px] rounded-full animate-float-orb opacity-20 blur-[80px]"
+        style={{
+          background: "hsl(263 70% 70%)",
+          bottom: "20%",
+          left: "40%",
+          animationDelay: "3s",
+        }}
+      />
     </div>
   );
 };
