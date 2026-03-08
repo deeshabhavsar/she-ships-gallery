@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { supabase, type Project } from "@/lib/supabase";
 import ProjectCard from "@/components/ProjectCard";
+import ProjectDetailDialog from "@/components/ProjectDetailDialog";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SparkleBackground from "@/components/SparkleBackground";
