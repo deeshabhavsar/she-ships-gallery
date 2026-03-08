@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Upload, Check } from "lucide-react";
+import { ArrowLeft, Upload, Check, Linkedin } from "lucide-react";
 import confetti from "canvas-confetti";
 import { supabase } from "@/lib/supabase";
 import Navbar from "@/components/Navbar";
@@ -16,6 +16,7 @@ const SubmitPage = () => {
     project_name: "",
     description: "",
     project_link: "",
+    linkedin_url: "",
     tags: [] as string[],
   });
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
@@ -164,6 +165,22 @@ const SubmitPage = () => {
                 className={inputClass}
                 placeholder="https://your-project.lovable.app"
               />
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-foreground mb-2">
+                LinkedIn Profile <span className="text-muted-foreground font-normal">(optional)</span>
+              </label>
+              <div className="relative">
+                <Linkedin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input
+                  type="url"
+                  value={form.linkedin_url}
+                  onChange={(e) => setForm({ ...form, linkedin_url: e.target.value })}
+                  className={`${inputClass} pl-11`}
+                  placeholder="https://linkedin.com/in/yourname"
+                />
+              </div>
             </div>
 
             <div>
