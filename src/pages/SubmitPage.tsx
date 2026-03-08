@@ -16,6 +16,7 @@ const SubmitPage = () => {
     project_name: "",
     description: "",
     project_link: "",
+    linkedin_url: "",
     tags: [] as string[],
   });
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
