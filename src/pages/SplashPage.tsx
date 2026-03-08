@@ -53,9 +53,7 @@ const SplashPage = () => {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="text-lg sm:text-xl text-white/80 mb-12 max-w-xl mx-auto"
         >
-          The age of the builder is here. And it's for everyone.
-          <br />
-          Join our celebration March 8th.
+          Here's to the women who build the world they want to live in.
         </motion.p>
 
         <motion.div
