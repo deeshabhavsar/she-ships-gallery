@@ -71,7 +71,7 @@ const GalleryPage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-muted-foreground"
           >
-            A community showcase of projects built at SheBuilds 2025
+            A community showcase of projects built at SheBuilds 2026
           </motion.p>
         </div>
       </section>
