@@ -48,7 +48,8 @@ const GalleryPage = () => {
       p.project_name.toLowerCase().includes(search.toLowerCase()) ||
       p.builder_name.toLowerCase().includes(search.toLowerCase());
     const matchesTag = !activeTag || p.tags.includes(activeTag);
-    return matchesSearch && matchesTag;
+    const matchesLocation = !activeLocation || p.location === activeLocation;
+    return matchesSearch && matchesTag && matchesLocation;
   });
 
   return (
