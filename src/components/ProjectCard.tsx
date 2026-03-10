@@ -66,6 +66,11 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
         </p>
 
         <div className="flex flex-wrap gap-1.5 mb-4">
+          {project.location && locationLabels[project.location] && (
+            <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-accent text-accent-foreground">
+              📍 {locationLabels[project.location]}
+            </span>
+          )}
           {project.tags.map((tag) => (
             <span
               key={tag}

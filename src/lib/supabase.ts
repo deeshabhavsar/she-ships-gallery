@@ -10,6 +10,7 @@ export type Project = {
   avatar_url: string | null;
   screenshot_url: string | null;
   linkedin_url: string | null;
+  location: string | null;
   created_at: string;
 };
 

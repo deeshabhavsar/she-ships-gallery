@@ -70,6 +70,7 @@ const SubmitPage = () => {
 
       const { error: insertError } = await supabase.from("projects").insert({
         ...form,
+        location: form.location || null,
         avatar_url,
         screenshot_url,
       });
