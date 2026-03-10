@@ -186,6 +186,22 @@ const SubmitPage = () => {
 
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
+                Did you attend a SheBuilds event? <span className="text-muted-foreground font-normal">(optional)</span>
+              </label>
+              <select
+                value={form.location}
+                onChange={(e) => setForm({ ...form, location: e.target.value })}
+                className={inputClass}
+              >
+                <option value="">Select an event location...</option>
+                <option value="New York">New York</option>
+                <option value="London">London</option>
+                <option value="Remote / Online">Remote / Online</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-foreground mb-2">
                 Tags * <span className="text-muted-foreground font-normal">(select at least one)</span>
               </label>
               <div className="flex flex-wrap gap-2">
