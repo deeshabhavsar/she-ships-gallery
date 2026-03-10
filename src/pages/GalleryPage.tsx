@@ -117,21 +117,6 @@ const GalleryPage = () => {
               </button>
             ))}
           </div>
-          <div className="flex flex-wrap justify-center gap-2">
-            {ALL_LOCATIONS.map((loc) => (
-              <button
-                key={loc}
-                onClick={() => setActiveLocation(activeLocation === loc ? null : loc)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-                  activeLocation === loc
-                    ? "gradient-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                📍 {loc}
-              </button>
-            ))}
-          </div>
         </div>
 
         {loading ? (

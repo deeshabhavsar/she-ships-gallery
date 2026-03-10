@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Upload, Check, Linkedin } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 import confetti from "canvas-confetti";
 import { supabase } from "@/lib/supabase";
 import Navbar from "@/components/Navbar";
