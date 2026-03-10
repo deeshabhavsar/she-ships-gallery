@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import SparkleBackground from "@/components/SparkleBackground";
 
 const ALL_TAGS = ["AI", "Productivity", "Health", "Education", "Fun", "Other"];
+const ALL_LOCATIONS = ["New York", "London", "Remote / Online"];
 
 const GalleryPage = () => {
   const [projects, setProjects] = useState<Project[]>([]);
