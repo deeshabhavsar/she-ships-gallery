@@ -68,9 +68,10 @@ const SubmitPage = () => {
       if (avatarFile) avatar_url = await uploadFile(avatarFile, "avatars");
       if (screenshotFile) screenshot_url = await uploadFile(screenshotFile, "screenshots");
 
+      const { attended_shebuilds, ...rest } = form;
       const { error: insertError } = await supabase.from("projects").insert({
-        ...form,
-        location: form.location || null,
+        ...rest,
+        location: attended_shebuilds ? "SheBuilds" : null,
         avatar_url,
         screenshot_url,
       });
