@@ -1,0 +1,1 @@
+ALTER TABLE public.projects ADD COLUMN location text DEFAULT NULL;

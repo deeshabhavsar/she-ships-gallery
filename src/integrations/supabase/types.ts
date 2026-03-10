@@ -51,6 +51,7 @@ export type Database = {
           description: string
           id: string
           linkedin_url: string | null
+          location: string | null
           project_link: string
           project_name: string
           screenshot_url: string | null
@@ -63,6 +64,7 @@ export type Database = {
           description: string
           id?: string
           linkedin_url?: string | null
+          location?: string | null
           project_link: string
           project_name: string
           screenshot_url?: string | null
@@ -75,6 +77,7 @@ export type Database = {
           description?: string
           id?: string
           linkedin_url?: string | null
+          location?: string | null
           project_link?: string
           project_name?: string
           screenshot_url?: string | null

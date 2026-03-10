@@ -17,6 +17,7 @@ const SubmitPage = () => {
     description: "",
     project_link: "",
     linkedin_url: "",
+    location: "",
     tags: [] as string[],
   });
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
@@ -69,6 +70,7 @@ const SubmitPage = () => {
 
       const { error: insertError } = await supabase.from("projects").insert({
         ...form,
+        location: form.location || null,
         avatar_url,
         screenshot_url,
       });
@@ -181,6 +183,22 @@ const SubmitPage = () => {
                   placeholder="https://linkedin.com/in/yourname"
                 />
               </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-foreground mb-2">
+                Did you attend a SheBuilds event? <span className="text-muted-foreground font-normal">(optional)</span>
+              </label>
+              <select
+                value={form.location}
+                onChange={(e) => setForm({ ...form, location: e.target.value })}
+                className={inputClass}
+              >
+                <option value="">Select an event location...</option>
+                <option value="New York">New York</option>
+                <option value="London">London</option>
+                <option value="Remote / Online">Remote / Online</option>
+              </select>
             </div>
 
             <div>
