@@ -194,7 +194,7 @@ const SubmitPage = () => {
                 onCheckedChange={(checked) => setForm({ ...form, attended_shebuilds: !!checked })}
               />
               <label htmlFor="attended_shebuilds" className="text-sm font-medium text-foreground cursor-pointer">
-                I attended a SheBuilds event
+                I attended a SheBuilds NYC event
               </label>
             </div>
 
