@@ -1,12 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import type { Project } from "@/lib/supabase";
-
-const locationLabels: Record<string, string> = {
-  "New York": "SheBuilds NYC",
-  "London": "SheBuilds London",
-  "Remote / Online": "SheBuilds Remote",
-};
 
 const tagStyles: Record<string, string> = {
   AI: "bg-primary/10 text-primary",
