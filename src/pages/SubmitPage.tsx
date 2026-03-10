@@ -186,18 +186,15 @@ const SubmitPage = () => {
               </div>
             </div>
 
-            <div>
-              <label className="block text-sm font-semibold text-foreground mb-2">
-                Did you attend a SheBuilds event? <span className="text-muted-foreground font-normal">(optional)</span>
-              </label>
-              <input
-                type="text"
-                value={form.location}
-                onChange={(e) => setForm({ ...form, location: e.target.value })}
-                className={inputClass}
-                placeholder="e.g. SheBuilds NYC, SheBuilds London, Remote"
-                maxLength={100}
+            <div className="flex items-center gap-3">
+              <Checkbox
+                id="attended_shebuilds"
+                checked={form.attended_shebuilds}
+                onCheckedChange={(checked) => setForm({ ...form, attended_shebuilds: !!checked })}
               />
+              <label htmlFor="attended_shebuilds" className="text-sm font-medium text-foreground cursor-pointer">
+                I attended a SheBuilds event
+              </label>
             </div>
 
             <div>
