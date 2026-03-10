@@ -16,7 +16,7 @@ const GalleryPage = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
-  const [activeLocation, setActiveLocation] = useState<string | null>(null);
+  
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
