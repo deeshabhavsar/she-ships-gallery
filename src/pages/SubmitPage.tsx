@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Upload, Check, Linkedin } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 import confetti from "canvas-confetti";
 import { supabase } from "@/lib/supabase";
 import Navbar from "@/components/Navbar";
@@ -17,7 +18,7 @@ const SubmitPage = () => {
     description: "",
     project_link: "",
     linkedin_url: "",
-    location: "",
+    attended_shebuilds: false,
     tags: [] as string[],
   });
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
@@ -68,9 +69,10 @@ const SubmitPage = () => {
       if (avatarFile) avatar_url = await uploadFile(avatarFile, "avatars");
       if (screenshotFile) screenshot_url = await uploadFile(screenshotFile, "screenshots");
 
+      const { attended_shebuilds, ...rest } = form;
       const { error: insertError } = await supabase.from("projects").insert({
-        ...form,
-        location: form.location || null,
+        ...rest,
+        location: attended_shebuilds ? "SheBuilds" : null,
         avatar_url,
         screenshot_url,
       });
@@ -185,18 +187,15 @@ const SubmitPage = () => {
               </div>
             </div>
 
-            <div>
-              <label className="block text-sm font-semibold text-foreground mb-2">
-                Did you attend a SheBuilds event? <span className="text-muted-foreground font-normal">(optional)</span>
-              </label>
-              <input
-                type="text"
-                value={form.location}
-                onChange={(e) => setForm({ ...form, location: e.target.value })}
-                className={inputClass}
-                placeholder="e.g. SheBuilds NYC, SheBuilds London, Remote"
-                maxLength={100}
+            <div className="flex items-center gap-3">
+              <Checkbox
+                id="attended_shebuilds"
+                checked={form.attended_shebuilds}
+                onCheckedChange={(checked) => setForm({ ...form, attended_shebuilds: !!checked })}
               />
+              <label htmlFor="attended_shebuilds" className="text-sm font-medium text-foreground cursor-pointer">
+                I attended a SheBuilds event
+              </label>
             </div>
 
             <div>

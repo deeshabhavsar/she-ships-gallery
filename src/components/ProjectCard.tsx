@@ -1,12 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import type { Project } from "@/lib/supabase";
-
-const locationLabels: Record<string, string> = {
-  "New York": "SheBuilds NYC",
-  "London": "SheBuilds London",
-  "Remote / Online": "SheBuilds Remote",
-};
 
 const tagStyles: Record<string, string> = {
   AI: "bg-primary/10 text-primary",
@@ -66,9 +60,9 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
         </p>
 
         <div className="flex flex-wrap gap-1.5 mb-4">
-          {project.location && locationLabels[project.location] && (
-            <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-accent text-accent-foreground">
-              📍 {locationLabels[project.location]}
+          {project.location && (
+            <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-primary/10 text-primary">
+              🏷️ SheBuilds '25
             </span>
           )}
           {project.tags.map((tag) => (

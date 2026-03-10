@@ -9,14 +9,14 @@ import Footer from "@/components/Footer";
 import SparkleBackground from "@/components/SparkleBackground";
 
 const ALL_TAGS = ["AI", "Productivity", "Health", "Education", "Fun", "Other"];
-const ALL_LOCATIONS = ["New York", "London", "Remote / Online"];
+
 
 const GalleryPage = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
-  const [activeLocation, setActiveLocation] = useState<string | null>(null);
+  
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
@@ -48,8 +48,7 @@ const GalleryPage = () => {
       p.project_name.toLowerCase().includes(search.toLowerCase()) ||
       p.builder_name.toLowerCase().includes(search.toLowerCase());
     const matchesTag = !activeTag || p.tags.includes(activeTag);
-    const matchesLocation = !activeLocation || p.location === activeLocation;
-    return matchesSearch && matchesTag && matchesLocation;
+    return matchesSearch && matchesTag;
   });
 
   return (
@@ -115,21 +114,6 @@ const GalleryPage = () => {
                 }`}
               >
                 {tag}
-              </button>
-            ))}
-          </div>
-          <div className="flex flex-wrap justify-center gap-2">
-            {ALL_LOCATIONS.map((loc) => (
-              <button
-                key={loc}
-                onClick={() => setActiveLocation(activeLocation === loc ? null : loc)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-                  activeLocation === loc
-                    ? "gradient-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                📍 {loc}
               </button>
             ))}
           </div>
